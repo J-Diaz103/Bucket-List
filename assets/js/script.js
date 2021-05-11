@@ -46,7 +46,6 @@ $("#searchBtn").click(function() {
             <p class="title is-4 movie-tittle" >${data.results[i].title}</p>
           </div>
         </div>
-
       <div class="content">
       <p class="movie-overview"> movie summary</p>
       <p>${data.results[i].overview}</p>
@@ -110,7 +109,11 @@ function genreButtonEvent(event) {
       <p>${data.results[i].overview}</p>
        
         </div>
-        <button  class="button is-primary is-light addMovie" data-title="${data.results[i].title}" data-image="${data.results[i].poster_path}" data-overview="${data.results[i].overview}"><i class="fas fa-ticket-alt"> Add to my list</i></button>
+        <button  class="button is-primary is-light addMovie"
+         data-title="${data.results[i].title}" 
+         data-image="${data.results[i].poster_path}" 
+         data-overview="${data.results[i].overview}">
+         <i class="fas fa-ticket-alt"> Add to my list</i></button>
         <button  class="button is-link is-light" id="trailerModal">Watch Trailer</button>
         </div>
     </div>
@@ -158,13 +161,10 @@ function addingMoviesToList() {
         <p class="title is-4">${movieTitleItem}</p>
       </div>
     </div>
-
     <div class="content">
     <p>${movieOverviewItem}</p>
-
   </div>
 </div>
-
   `);
 
 		myMovieList.push({
@@ -261,6 +261,8 @@ function clearMovieLIst(){
   $("#clear-list").click(function(){
    localStorage.removeItem("movie");
    $("div").remove("#generatedList");
+   $("#watchList").append(`    <div style="background-color: none;" id="generatedList" class="columns">
+   </div>`)
   })
 }
 clearMovieLIst();
